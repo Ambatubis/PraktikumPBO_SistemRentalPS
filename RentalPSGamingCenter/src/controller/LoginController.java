@@ -14,6 +14,7 @@ import model.User;
  * @author Asus
  */
 public class LoginController {
+    
     Connection conn;
 
     public LoginController() {
