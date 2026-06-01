@@ -11,6 +11,9 @@ import view.FormPaketRental;
 import view.FormMember;
 import view.FormTransaksi;
 import view.FormPembayaran;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.awt.Color;
 
 /**
  *
@@ -23,14 +26,73 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+        
+        btnMember.setBackground(new Color(0,153,255));
+        btnMember.setForeground(Color.WHITE);
 
+        btnDataPS.setBackground(new Color(0,153,255));
+        btnDataPS.setForeground(Color.WHITE);
+
+        btnTransaksi.setBackground(new Color(0,153,255));
+        btnTransaksi.setForeground(Color.WHITE);
+        
+        btnPaket.setBackground(new Color(0,153,255));
+        btnPaket.setForeground(Color.WHITE);
+        
+        btnPembayaran.setBackground(new Color(0,153,255));
+        btnPembayaran.setForeground(Color.WHITE);
+        
+        btnLogout.setBackground(new Color(220,53,69));
+        btnLogout.setForeground(Color.WHITE);
+        tampilJamRealtime();
+    }
+    
+    private void tampilJamRealtime() {
+
+        Thread jamThread = new Thread(() -> {
+
+            while (true) {
+
+                String waktu =
+                        new SimpleDateFormat("HH:mm:ss")
+                                .format(new Date());
+
+                lblJam.setText(waktu);
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        });
+
+        jamThread.start();
     }
     
     public Dashboard(User user) {
         initComponents();
+
+        btnMember.setBackground(new Color(0,153,255));
+        btnMember.setForeground(Color.WHITE);
+
+        btnDataPS.setBackground(new Color(0,153,255));
+        btnDataPS.setForeground(Color.WHITE);
+
+        btnTransaksi.setBackground(new Color(0,153,255));
+        btnTransaksi.setForeground(Color.WHITE);
         
-        lblNama.setText("Nama : " + user.getNama());
-        lblRole.setText("Role : " + user.getRole());
+        btnPaket.setBackground(new Color(0,153,255));
+        btnPaket.setForeground(Color.WHITE);
+        
+        btnPembayaran.setBackground(new Color(0,153,255));
+        btnPembayaran.setForeground(Color.WHITE);
+        
+        btnLogout.setBackground(new Color(220,53,69));
+        btnLogout.setForeground(Color.WHITE);
+        tampilJamRealtime();
     }
 
     /**
@@ -43,22 +105,24 @@ public class Dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        lblNama = new javax.swing.JLabel();
-        lblRole = new javax.swing.JLabel();
         btnDataPS = new javax.swing.JButton();
         btnMember = new javax.swing.JButton();
         btnPaket = new javax.swing.JButton();
         btnTransaksi = new javax.swing.JButton();
         btnPembayaran = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        lblJam = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lblNama.setText("Nama : ");
-
-        lblRole.setText("Role : ");
 
         btnDataPS.setText("Data PS");
         btnDataPS.addActionListener(new java.awt.event.ActionListener() {
@@ -102,50 +166,92 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        lblJam.setText("00:00:00");
+
+        jLabel1.setText("Jam : ");
+
+        jLabel2.setText("Selamat Datang");
+
+        jLabel3.setText("=========================");
+
+        jLabel4.setText("=========================");
+
+        jLabel5.setText(" RENTAL PS GAMING CENTER");
+
+        jLabel6.setText("=========================");
+
+        jLabel7.setText("=========================");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(223, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLogout)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDataPS)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblNama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblRole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(btnPaket)
-                            .addComponent(btnPembayaran))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMember)
-                            .addComponent(btnTransaksi)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(btnLogout)))
-                .addContainerGap(421, Short.MAX_VALUE))
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnDataPS, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel2)
+                                            .addGap(288, 288, 288))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(lblJam))))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addComponent(jLabel5)))
+                                    .addGap(230, 230, 230)))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMember, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPaket, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnTransaksi, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPembayaran, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(jLabel7)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblNama, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblRole)
+                .addContainerGap()
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDataPS)
-                    .addComponent(btnMember))
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPaket)
-                    .addComponent(btnTransaksi))
+                    .addComponent(lblJam)
+                    .addComponent(jLabel1))
+                .addGap(1, 1, 1)
+                .addComponent(jLabel6)
+                .addGap(1, 1, 1)
+                .addComponent(btnDataPS)
+                .addGap(18, 18, 18)
+                .addComponent(btnMember)
+                .addGap(18, 18, 18)
+                .addComponent(btnPaket)
+                .addGap(18, 18, 18)
+                .addComponent(btnTransaksi)
                 .addGap(18, 18, 18)
                 .addComponent(btnPembayaran)
-                .addGap(28, 28, 28)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogout)
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
@@ -252,7 +358,13 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnPembayaran;
     private javax.swing.JButton btnTransaksi;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel lblNama;
-    private javax.swing.JLabel lblRole;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblJam;
     // End of variables declaration//GEN-END:variables
 }

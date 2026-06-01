@@ -8,13 +8,17 @@ package model;
  *
  * @author Asus
  */
-public class Pembayaran {
+public class Pembayaran extends BaseModel{
     private int idPembayaran;
     private int idTransaksi;
     private String metodeBayar;
     private int jumlahBayar;
     private int kembalian;
     private String tanggalBayar;
+    
+    public Pembayaran() {
+        super();
+    }
 
     public int getIdPembayaran() {
         return idPembayaran;

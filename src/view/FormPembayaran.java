@@ -5,8 +5,11 @@
 package view;
 
 import controller.PembayaranController;
+import java.awt.Color;
 import model.Pembayaran;
 import javax.swing.JOptionPane;
+import util.FileHelper;
+
 /**
  *
  * @author Asus
@@ -29,6 +32,18 @@ public class FormPembayaran extends javax.swing.JFrame {
         initComponents();
         
         controller.loadTransaksi(cbTransaksi);
+        
+        btnHitung.setBackground(new Color(0,153,255));
+        btnHitung.setForeground(Color.WHITE);
+
+        btnSimpan.setBackground(new Color(0,153,255));
+        btnSimpan.setForeground(Color.WHITE);
+
+        btnReset.setBackground(new Color(0,153,255));
+        btnReset.setForeground(Color.WHITE);
+        
+        btnKembali.setBackground(new Color(0,153,255));
+        btnKembali.setForeground(Color.WHITE);
         
         tampilTabel();
     }
@@ -170,38 +185,34 @@ public class FormPembayaran extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblMember)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15))
+                                .addComponent(cbTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPS)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTotalTagihan, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblTanggal)
+                                    .addComponent(lblPaket))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblPS)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtTotalTagihan, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblTanggal)
-                                            .addComponent(lblPaket))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cbMetodeBayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtJumlahBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblStatus1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(10, 10, 10))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnReset))
+                                    .addComponent(cbMetodeBayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtJumlahBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblStatus1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnHitung)
                         .addGap(18, 18, 18)
                         .addComponent(btnSimpan))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
+                        .addContainerGap()
+                        .addComponent(btnReset)
+                        .addGap(18, 18, 18)
                         .addComponent(btnKembali)))
+                .addGap(10, 10, 10)
                 .addComponent(jScrollPane1)
                 .addContainerGap())
         );
@@ -228,14 +239,14 @@ public class FormPembayaran extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStatus1)
                     .addComponent(txtKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHitung)
                     .addComponent(btnSimpan))
                 .addGap(18, 18, 18)
-                .addComponent(btnReset)
-                .addGap(18, 18, 18)
-                .addComponent(btnKembali)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReset)
+                    .addComponent(btnKembali))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,7 +324,24 @@ public class FormPembayaran extends javax.swing.JFrame {
 
             if(sukses){
 
-                JOptionPane.showMessageDialog(this,"Pembayaran berhasil disimpan");
+                int idTransaksi = Integer.parseInt(cbTransaksi.getSelectedItem().toString());
+
+                int totalTagihan = Integer.parseInt(txtTotalTagihan.getText());
+
+                int jumlahBayar = Integer.parseInt(txtJumlahBayar.getText());
+
+                int kembalian = Integer.parseInt(txtKembalian.getText());
+
+                String metodeBayar = cbMetodeBayar.getSelectedItem().toString();
+
+                FileHelper.cetakStruk(
+                        idTransaksi,
+                        totalTagihan,
+                        jumlahBayar,
+                        kembalian,
+                        metodeBayar);
+
+                JOptionPane.showMessageDialog(this,"Pembayaran berhasil disimpan dan struk dicetak");
 
                 tampilTabel();
 

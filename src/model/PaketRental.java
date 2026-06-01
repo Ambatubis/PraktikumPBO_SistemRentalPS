@@ -8,7 +8,7 @@ package model;
  *
  * @author Asus
  */
-public class PaketRental {
+public class PaketRental extends BaseModel{
     
     private int idPaket;
     private String namaPaket;
@@ -16,6 +16,7 @@ public class PaketRental {
     private int hargaPaket;
 
     public PaketRental() {
+        super();
     }
 
     public int getIdPaket() {

@@ -8,7 +8,7 @@ package model;
  *
  * @author Asus
  */
-public class Playstation {
+public class Playstation extends BaseModel{
     
     private int idPs;
     private String namaPs;
@@ -17,6 +17,7 @@ public class Playstation {
     private int hargaPerJam;
 
     public Playstation() {
+        super();
     }
 
     public int getIdPs() {

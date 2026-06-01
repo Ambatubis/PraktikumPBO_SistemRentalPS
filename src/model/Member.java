@@ -8,7 +8,7 @@ package model;
  *
  * @author Asus
  */
-public class Member {
+public class Member extends BaseModel{
     private int idMember;
     private String namaMember;
     private String noHp;
@@ -16,6 +16,12 @@ public class Member {
     private String statusMember;
 
     public Member() {
+        super();
+    }
+    
+    @Override
+    public String info() {
+        return "Data Member: " + namaMember;
     }
 
     public int getIdMember() {

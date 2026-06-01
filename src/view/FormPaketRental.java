@@ -5,6 +5,7 @@
 package view;
 
 import controller.PaketRentalController;
+import java.awt.Color;
 import model.PaketRental;
 import javax.swing.JOptionPane;
 
@@ -30,6 +31,21 @@ public class FormPaketRental extends javax.swing.JFrame {
     
     public FormPaketRental() {
         initComponents();
+        
+        btnTambah.setBackground(new Color(0,153,255));
+        btnTambah.setForeground(Color.WHITE);
+
+        btnEdit.setBackground(new Color(0,153,255));
+        btnEdit.setForeground(Color.WHITE);
+
+        btnReset.setBackground(new Color(0,153,255));
+        btnReset.setForeground(Color.WHITE);
+        
+        btnKembali.setBackground(new Color(0,153,255));
+        btnKembali.setForeground(Color.WHITE);
+        
+        btnHapus.setBackground(new Color(220,53,69));
+        btnHapus.setForeground(Color.WHITE);
         
         tampilTabel();
     }

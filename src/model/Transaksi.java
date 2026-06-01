@@ -8,7 +8,7 @@ package model;
  *
  * @author Asus
  */
-public class Transaksi {
+public class Transaksi extends AbstractEntity {
     private int idTransaksi;
     private int idMember;
     private int idPs;
@@ -19,6 +19,12 @@ public class Transaksi {
     private String statusTransaksi;
 
     public Transaksi() {
+        super();
+    }
+    
+    @Override
+    public void save() {
+        System.out.println("Save transaksi ke database");
     }
 
     public int getIdTransaksi() {

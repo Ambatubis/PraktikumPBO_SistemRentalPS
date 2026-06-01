@@ -311,4 +311,28 @@ public class TransaksiController {
 
     }
     
+    public int getDurasiPaket(String namaPaket){
+
+        try{
+
+            String sql =
+            "SELECT durasi_jam FROM paket_rental WHERE nama_paket=?";
+
+            PreparedStatement pst =
+                    conn.prepareStatement(sql);
+
+            pst.setString(1, namaPaket);
+
+            ResultSet rs = pst.executeQuery();
+
+            if(rs.next()){
+                return rs.getInt("durasi_jam");
+            }
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
+
+        return 0;
+    }
 }

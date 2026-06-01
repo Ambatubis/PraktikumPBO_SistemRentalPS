@@ -8,18 +8,16 @@ package model;
  *
  * @author Asus
  */
-public class User {
+public class User extends BaseModel{
     private int idUser;
     private String username;
     private String password;
     private String nama;
     private String role;
 
-    // Constructor kosong
     public User() {
+        super();
     }
-
-    // Getter dan Setter
 
     public int getIdUser() {
         return idUser;

@@ -5,6 +5,7 @@
 package view;
 
 import controller.PlaystationController;
+import java.awt.Color;
 import model.Playstation;
 import javax.swing.JOptionPane;
 
@@ -30,6 +31,21 @@ public class FormDataPS extends javax.swing.JFrame {
     
     public FormDataPS() {
         initComponents();
+        
+        btnTambah.setBackground(new Color(0,153,255));
+        btnTambah.setForeground(Color.WHITE);
+
+        btnEdit.setBackground(new Color(0,153,255));
+        btnEdit.setForeground(Color.WHITE);
+
+        btnReset.setBackground(new Color(0,153,255));
+        btnReset.setForeground(Color.WHITE);
+        
+        btnKembali.setBackground(new Color(0,153,255));
+        btnKembali.setForeground(Color.WHITE);
+        
+        btnHapus.setBackground(new Color(220,53,69));
+        btnHapus.setForeground(Color.WHITE);
         
         tampilTabel();
     }
