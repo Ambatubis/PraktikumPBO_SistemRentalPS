@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2026 at 03:28 AM
+-- Generation Time: Jun 01, 2026 at 06:44 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -106,7 +106,7 @@ CREATE TABLE `pembayaran` (
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_transaksi`, `metode_bayar`, `jumlah_bayar`, `kembalian`, `tanggal_bayar`) VALUES
 (1, 4, 'Cash', 48000, 20000, '2026-06-01 08:06:00'),
-(2, 5, 'Cash', 50000, 10000, '2026-06-01 08:26:04');
+(3, 3, 'Cash', 10000, 2000, '2026-06-01 10:04:25');
 
 -- --------------------------------------------------------
 
@@ -157,7 +157,7 @@ CREATE TABLE `transaksi` (
 INSERT INTO `transaksi` (`id_transaksi`, `tanggal`, `id_member`, `id_ps`, `id_paket`, `id_user`, `total_bayar`, `status_transaksi`) VALUES
 (3, '2026-06-01 00:00:00', 1, 1, 1, 1, 8000, 'Berjalan'),
 (4, '2026-06-01 00:00:00', 2, 2, 5, 1, 28000, 'Berjalan'),
-(5, '2026-06-01 00:00:00', 4, 2, 4, 1, 40000, 'Berjalan');
+(12, '2026-06-01 00:00:00', 1, 1, 1, 1, 8000, 'Berjalan');
 
 -- --------------------------------------------------------
 
@@ -260,7 +260,7 @@ ALTER TABLE `paket_rental`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `playstation`
@@ -272,7 +272,7 @@ ALTER TABLE `playstation`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user`
