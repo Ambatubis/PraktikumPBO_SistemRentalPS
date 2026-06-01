@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2026 at 12:20 PM
+-- Generation Time: Jun 01, 2026 at 03:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -58,7 +58,8 @@ CREATE TABLE `member` (
 
 INSERT INTO `member` (`id_member`, `nama_member`, `no_hp`, `alamat`, `status_member`) VALUES
 (1, 'Andi Saputra', '08123456789', 'Yogyakarta', 'VIP'),
-(2, 'Budi Santoso', '08234567891', 'Sleman', 'Regular');
+(2, 'Budi Santoso', '08234567891', 'Sleman', 'Regular'),
+(4, 'Tabri', '08345678910', 'Bantul', 'VIP');
 
 -- --------------------------------------------------------
 
@@ -99,6 +100,14 @@ CREATE TABLE `pembayaran` (
   `tanggal_bayar` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `pembayaran`
+--
+
+INSERT INTO `pembayaran` (`id_pembayaran`, `id_transaksi`, `metode_bayar`, `jumlah_bayar`, `kembalian`, `tanggal_bayar`) VALUES
+(1, 4, 'Cash', 48000, 20000, '2026-06-01 08:06:00'),
+(2, 5, 'Cash', 50000, 10000, '2026-06-01 08:26:04');
+
 -- --------------------------------------------------------
 
 --
@@ -134,9 +143,21 @@ CREATE TABLE `transaksi` (
   `id_transaksi` int(11) NOT NULL,
   `tanggal` datetime DEFAULT current_timestamp(),
   `id_member` int(11) DEFAULT NULL,
+  `id_ps` int(11) DEFAULT NULL,
+  `id_paket` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `total_bayar` int(11) NOT NULL
+  `total_bayar` int(11) NOT NULL,
+  `status_transaksi` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `tanggal`, `id_member`, `id_ps`, `id_paket`, `id_user`, `total_bayar`, `status_transaksi`) VALUES
+(3, '2026-06-01 00:00:00', 1, 1, 1, 1, 8000, 'Berjalan'),
+(4, '2026-06-01 00:00:00', 2, 2, 5, 1, 28000, 'Berjalan'),
+(5, '2026-06-01 00:00:00', 4, 2, 4, 1, 40000, 'Berjalan');
 
 -- --------------------------------------------------------
 
@@ -227,19 +248,19 @@ ALTER TABLE `detail_transaksi`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `paket_rental`
 --
 ALTER TABLE `paket_rental`
-  MODIFY `id_paket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_paket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `playstation`
@@ -251,7 +272,7 @@ ALTER TABLE `playstation`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
